@@ -2,15 +2,11 @@
 
 ## users テーブル
 
-| Column          | Type   | Options                 |
-| --------------- | ------ | ----------------------  |
-| nickname        | string | null: false             |
-| first_name      | string | null: false             |
-| first_name_kana | string | null: false             |
-| last_name       | string | null: false             |
-| last_name_kana  | string | null: false             |
-| email           | string | null: false             |
-| password        | string | null: false unique: true|
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| nickname           | string | null: false |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
 
 
 ### Association
@@ -23,6 +19,7 @@
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
 | title  | string     | null: false                    |
+| image  | string     | null: false                    |
 | text   | text       | null: false                    |
 | price  | integer    | null: false                    |
 | user   | references | null: false, foreign_key: true |
@@ -37,7 +34,7 @@
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
 | user   | references | null: false, foreign_key: true |
-| room   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -49,9 +46,9 @@
 
 | Column          | Type       | Options                        |
 | --------------  | ---------- | ------------------------------ |
-| post-code       | integer    | null: false                    |
+| post_code       | integer    | null: false                    |
 | city            | string     | null: false                    |
-| building_name   | string     |                                |
+| building_name   | string     | null: false                    |
 | building_number | string     |                                |
 | orders          | references | null: false, foreign_key: true |
 
