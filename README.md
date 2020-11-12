@@ -23,7 +23,8 @@
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| price         | string     | null: false                    |
+| title         | string     | null: false                    |
+| price         | integer    | null: false                    |
 | cost_id       | integer    | null: false                    |
 | days_id       | integer    | null: false                    |
 | status_id     | integer    | null: false                    |
