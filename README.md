@@ -24,16 +24,16 @@
 
 | Column        | Type    | Options                        |
 | ------------- | ------- | ------------------------------ |
-| price         | string  | null: false                    |
+| price         | integer | null: false                    |
 | size          | string  | null: false                    |
 | cost          | string  | null: false                    |
 | days          | string  | null: false                    |
 | status        | string  | null: false                    |
-| prefecture_id | string  | null: false, foreign_key: true |
+| prefecture_id | string  | null: false,                   |
 | text          | text    | null: false                    |
-| category_id   | integer | null: false, foreign_key: true |
-| shipping_id   | integer | null: false, foreign_key: true |
-| user_id       | integer | null: false, foreign_key: true |
+| category_id   | integer | null: false,                   |
+| shipping_id   | integer | null: false,                   |
+| user_id       | integer | null: false,                   |
 
 
 ### Association
@@ -45,8 +45,8 @@
 
 | Column  | Typ     | Options                        |
 | ------- | ------- | ------------------------------ |
-| user_id | integer | null: false, foreign_key: true |
-| item_id | integer | null: false, foreign_key: true |
+| user_id | integer | null: false,                   |
+| item_id | integer | null: false,                   |
 
 ### Association
 
@@ -61,10 +61,10 @@
 | post_code       | string  | null: false                    |
 | phone_number    | string  | null: false                    |
 | city            | string  | null: false                    |
-| building_name   | string  |                     |
+| building_name   | string  |                                |
 | building_number | string  | null: false                    |
-| order_id        | integer | null: false, foreign_key: true |
+| order_id        | integer | null: false,                   |
 
 ### Association
 
-- belongs_to :orders
+- belongs_to :order
