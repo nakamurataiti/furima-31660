@@ -9,8 +9,7 @@
 | first_name_kana    | string | null: false |
 | last_name          | string | null: false |
 | last_name_kana     | string | null: false |
-| introduction       | text   | null: false |
-| birth_day          | string | null: false |
+| birth_day          | date   | null: false |
 | email              | string | null: false |
 | encrypted_password | string | null: false |
 
@@ -43,10 +42,10 @@
 
 ##  orders テーブル
 
-| Column  | Typ     | Options                        |
-| ------- | ------- | ------------------------------ |
-| user_id | integer | null: false,                   |
-| item_id | integer | null: false,                   |
+| Column  | Typ        | Options                        |
+| ------- | ---------- | ------------------------------ |
+| user_id | references | null: false, foreign_key: true |
+| item_id | references | null: false, foreign_key: true |
 
 ### Association
 
