@@ -40,7 +40,8 @@ RSpec.describe User, type: :model do
   end
 
   it 'password半角混合でない場合は登録できないこと' do
-    @user.password = 'aaaaaaa'
+    @user.password = 'aaaaaa'
+    @user.password = '123456'
     @user.valid?
     expect(@user.errors.full_messages).to include('パスワードは英字と数字の両方を含めて設定してください')
   end
@@ -50,17 +51,11 @@ RSpec.describe User, type: :model do
     expect(@user.errors.full_messages).to include('パスワードは英字と数字の両方を含めて設定してください')
   end
 
-  it 'passwordが5文字以下であれば登録できないこと' do
+  it 'passwordが英数字混合だが、字数が5文字以下であれば登録できないこと' do
     @user.password = '12345'
     @user.password_confirmation = '12345'
     @user.valid?
     expect(@user.errors.full_messages).to include('パスワードは6文字以上で入力してください', 'パスワードは英字と数字の両方を含めて設定してください')
-  end
-
-  it 'encrypted_password半角混合でない場合は登録できないこと' do
-    @user.password = 'aaaaaaa'
-    @user.valid?
-    expect(@user.errors.full_messages).to include('パスワードは英字と数字の両方を含めて設定してください')
   end
 
   it 'passwordとpassword_confirmationが不一致では登録できないこと' do
