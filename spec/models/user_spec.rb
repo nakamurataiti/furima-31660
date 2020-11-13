@@ -20,6 +20,12 @@ RSpec.describe User, type: :model do
     expect(@user.errors.full_messages).to include('Eメールを入力してください')
   end
 
+  it 'emailに＠がない場合は登録できないこと' do
+    @user.email = 'aaa.com'
+    @user.valid?
+    expect(@user.errors.full_messages).to include('Eメールは不正な値です')
+  end
+
   it '重複したemailが存在する場合登録できないこと' do
     @user.save
     another_user = FactoryBot.build(:user, email: @user.email)
@@ -38,11 +44,30 @@ RSpec.describe User, type: :model do
     @user.valid?
     expect(@user.errors.full_messages).to include('パスワードは英字と数字の両方を含めて設定してください')
   end
+  it 'passwordが全角では登録できないこと' do
+    @user.password = 'AAAAAA'
+    @user.valid?
+    expect(@user.errors.full_messages).to include('パスワードは英字と数字の両方を含めて設定してください')
+  end
+
+  it 'passwordが5文字以下であれば登録できないこと' do
+    @user.password = '12345'
+    @user.password_confirmation = '12345'
+    @user.valid?
+    expect(@user.errors.full_messages).to include('パスワードは6文字以上で入力してください', 'パスワードは英字と数字の両方を含めて設定してください')
+  end
 
   it 'encrypted_password半角混合でない場合は登録できないこと' do
     @user.password = 'aaaaaaa'
     @user.valid?
     expect(@user.errors.full_messages).to include('パスワードは英字と数字の両方を含めて設定してください')
+  end
+
+  it 'passwordとpassword_confirmationが不一致では登録できないこと' do
+      @user.password = '123456'
+      @user.password_confirmation = '1234567'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('パスワード（確認用）とパスワードの入力が一致しません', 'パスワードは英字と数字の両方を含めて設定してください')
   end
 
   it 'last_nameがない場合は登録できないこと' do
