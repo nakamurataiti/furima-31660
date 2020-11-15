@@ -23,5 +23,5 @@ class Item < ApplicationRecord
   validates :cost_id, numericality: { other_than: 1 } 
   validates :days_id, numericality: { other_than: 1 } 
   validates :prefecture_id, numericality: { other_than: 1 } 
-  validates :genre_id, numericality: { other_than: 1 } 
+  validates :status_id, numericality: { other_than: 1 } 
 end
