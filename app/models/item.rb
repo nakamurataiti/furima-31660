@@ -11,17 +11,19 @@ class Item < ApplicationRecord
 
   with_options presence: true do
     validates :title
-    validates :user_id
     validates :text
+    validates :image
   end
   
-  with_options presence: true, format: { with: /\A[0-9]+\z/, message: 'は半角数字を使用してください' } do
-    validates :price
-  end
+  validates :price, presence: true, format: { with: /\A[0-9]+\z/, message: 'は半角数字を使用してください' }
 
-  validates :category_id, numericality: { other_than: 1 } 
-  validates :cost_id, numericality: { other_than: 1 } 
-  validates :days_id, numericality: { other_than: 1 } 
-  validates :prefecture_id, numericality: { other_than: 1 } 
-  validates :status_id, numericality: { other_than: 1 } 
+  
+  validates_inclusion_of :price, in: 300..999999999, message: 'は範囲以内の価格で記述してください'
+  with_options numericality: { other_than: 1 } do
+  validates :category_id
+  validates :cost_id
+  validates :days_id
+  validates :prefecture_id
+  validates :status_id
+  end
 end
