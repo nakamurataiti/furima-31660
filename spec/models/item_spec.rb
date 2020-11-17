@@ -11,7 +11,7 @@ RSpec.describe Item, type: :model do
   it 'titleがない場合は登録できないこと' do
     @item.title = nil
     @item.valid?
-    expect(@item.errors.full_messages).to include("Titleを入力してください")
+    expect(@item.errors.full_messages).to include('Titleを入力してください')
   end
 
   it 'textがない場合は登録できないこと' do
@@ -19,7 +19,6 @@ RSpec.describe Item, type: :model do
     @item.valid?
     expect(@item.errors.full_messages).to include('Textを入力してください')
   end
-
 
   it '商品画像がない場合は登録できないこと' do
     @item.image = nil
@@ -46,7 +45,7 @@ RSpec.describe Item, type: :model do
   end
 
   it '価格が999,999,999以上の場合は登録できないこと' do
-    @item.price = 1000000000
+    @item.price = 1_000_000_000
     @item.valid?
     expect(@item.errors.full_messages).to include('Priceは範囲以内の価格で記述してください')
   end
@@ -58,7 +57,7 @@ RSpec.describe Item, type: :model do
   end
 
   it 'status_idがない場合は登録できないこと' do
-    @item.status_id= nil
+    @item.status_id = nil
     @item.valid?
     expect(@item.errors.full_messages).to include('Statusは数値で入力してください')
   end
@@ -74,7 +73,4 @@ RSpec.describe Item, type: :model do
     @item.valid?
     expect(@item.errors.full_messages).to include('Categoryは数値で入力してください')
   end
-
-  
-
 end
