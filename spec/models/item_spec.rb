@@ -51,26 +51,32 @@ RSpec.describe Item, type: :model do
   end
 
   it 'days_idがない場合は登録できないこと' do
-    @item.days_id = nil
+    @item.days_id = 1
     @item.valid?
-    expect(@item.errors.full_messages).to include('Daysは数値で入力してください')
+    expect(@item.errors.full_messages).to include('Daysは1以外の値にしてください')
   end
 
   it 'status_idがない場合は登録できないこと' do
-    @item.status_id = nil
+    @item.status_id = 1
     @item.valid?
-    expect(@item.errors.full_messages).to include('Statusは数値で入力してください')
+    expect(@item.errors.full_messages).to include('Statusは1以外の値にしてください')
+  end
+
+  it 'cost_idがない場合は登録できないこと' do
+    @item.cost_id = 1
+    @item.valid?
+    expect(@item.errors.full_messages).to include('Costは1以外の値にしてください')
   end
 
   it 'prefecture_idがない場合は登録できないこと' do
-    @item.prefecture_id = nil
+    @item.prefecture_id = 1
     @item.valid?
-    expect(@item.errors.full_messages).to include('Prefectureは数値で入力してください')
+    expect(@item.errors.full_messages).to include('Prefectureは1以外の値にしてください')
   end
 
   it 'category_idがない場合は登録できないこと' do
-    @item.category_id = nil
+    @item.category_id = 1
     @item.valid?
-    expect(@item.errors.full_messages).to include('Categoryは数値で入力してください')
+    expect(@item.errors.full_messages).to include('Categoryは1以外の値にしてください')
   end
 end
