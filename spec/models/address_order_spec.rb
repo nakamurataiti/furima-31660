@@ -6,7 +6,7 @@ RSpec.describe AddressOrder, type: :model do
       @user = FactoryBot.build(:user)
       @item = FactoryBot.create(:item)
       @address_order = FactoryBot.build(:address_order,user_id: @user.id,item_id:@item.id)
-      sleep(0.5)
+      sleep(0.1)
     end
 
     it 'すべての値が正しく入力されていれば保存できること' do
