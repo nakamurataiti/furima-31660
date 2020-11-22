@@ -12,6 +12,7 @@ RSpec.describe AddressOrder, type: :model do
     it 'すべての値が正しく入力されていれば保存できること' do
       expect(@address_order).to be_valid
     end
+
     it 'postal_codeが空だと保存できないこと' do
       @address_order.postal_code = nil
       @address_order.valid?
@@ -60,16 +61,16 @@ RSpec.describe AddressOrder, type: :model do
       expect(@address_order.errors.full_messages).to include("Building numberを入力してください")
     end
 
-    it 'building_nameは空でも保存できること' do
-      @address_order.building_name = nil
-      expect(@address_order).to be_valid
-    end
-
+    
     it 'tokenが空だと保存できないこと' do
       @address_order.token = nil
       @address_order.valid?
       expect(@address_order.errors.full_messages).to include("Tokenを入力してください")
     end
     
+    it 'building_nameは空でも保存できること' do
+      @address_order.building_name = nil
+      expect(@address_order).to be_valid
+    end
   end
 end
