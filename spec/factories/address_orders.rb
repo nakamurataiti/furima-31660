@@ -5,7 +5,7 @@ FactoryBot.define do
     prefecture_id   {1} 
     city            {'福岡'} 
     building_number {'1-2-2'} 
-    building_name   {nil} 
+    building_name   {'ハイツ'} 
     token           {'tok_abcdefghijk00000000000000000'}
   end
  
