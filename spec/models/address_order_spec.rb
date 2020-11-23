@@ -9,10 +9,14 @@ RSpec.describe AddressOrder, type: :model do
       sleep(0.1)
     end
 
-    it 'すべての値が正しく入力されていれば保存できること' do
-      expect(@address_order).to be_valid
+
+    context '商品購入ができる時' do
+      it 'すべての値が正しく入力されていれば保存できること' do
+        expect(@address_order).to be_valid
+      end
     end
 
+    context '商品購入ができない時' do
     it 'postal_codeが空だと保存できないこと' do
       @address_order.postal_code = nil
       @address_order.valid?
@@ -72,5 +76,6 @@ RSpec.describe AddressOrder, type: :model do
       @address_order.building_name = nil
       expect(@address_order).to be_valid
     end
+  end
   end
 end
